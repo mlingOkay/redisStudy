@@ -1,4 +1,4 @@
-package com.example.redisstudy.jedis;
+package com.example.redisstudy.jedis.controller;
 
 import redis.clients.jedis.Jedis;
 
