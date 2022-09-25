@@ -1,0 +1,12 @@
+spring:
+  redis:
+    password:
+    cluster:
+      nodes: 192.168.227.2:6379,192.168.227.2:6380,192.168.227.2:6381,192.168.227.2:6389,192.168.227.2:6390,192.168.227.2:6391
+      max-redirects: 6
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active: 32
+        min-idle: 8
+#集群方式
