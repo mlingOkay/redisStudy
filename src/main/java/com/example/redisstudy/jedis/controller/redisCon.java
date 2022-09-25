@@ -30,11 +30,15 @@ public class redisCon {
         String name = (String) redisTemplate.opsForValue().get("name");
         return name;
     }
+
+    /**
+     * [root@localhost ~]# ab -n 1000 -c 100 http://192.168.227.1:8080/test/testLock
+     */
     @GetMapping("testLock")
     public void testLock(){
         //声明一个uuid,将作为一个value放入我们的key所对应的值中
         String uuid = UUID.randomUUID().toString();
-        Boolean lock = redisTemplate.opsForValue().setIfAbsent("lock", "111",3,TimeUnit.SECONDS);
+        Boolean lock = redisTemplate.opsForValue().setIfAbsent("lock", uuid,3,TimeUnit.SECONDS);
         //2获取锁成功、查询num的值
         if (lock) {
             Object value = redisTemplate.opsForValue().get("num");
